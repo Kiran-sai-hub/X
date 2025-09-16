@@ -1,13 +1,25 @@
 import express from "express";
 import { protectRoute } from "../middleware/auth.js";
-import { commentOnPost, createPost, deletePost, getAllPosts, likeUnlikePost } from "../controllers/post.controller.js";
+import {
+  commentOnPost,
+  createPost,
+  deletePost,
+  getAllPosts,
+  getFollowingPosts,
+  getLikedPosts,
+  likeUnlikePost,
+  getUserPosts,
+} from "../controllers/post.controller.js";
 
 const router = express.Router();
 
 router.get("/all", protectRoute, getAllPosts);
+router.get("/following", protectRoute, getFollowingPosts);
 router.post("/create", protectRoute, createPost);
 router.delete("/delete/:id", protectRoute, deletePost);
 router.post("/comment/:id", protectRoute, commentOnPost);
-router.post("/likes/:id", protectRoute, likeUnlikePost);
+router.post("/like/:id", protectRoute, likeUnlikePost);
+router.post("/likes/:id", protectRoute, getLikedPosts);
+router.get("/user/:username", protectRoute, getUserPosts);
 
 export default router;
