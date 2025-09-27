@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import generateTokenAndSetCookie from "../lib/utils/generateTokens.js";
 import bcrypt from "bcryptjs";
 
-const singUp = async (req, res) => {
+const signUp = async (req, res) => {
   try {
     const { username, fullname, email, password } = req.body;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -130,4 +130,4 @@ const getMe = async (req, res) => {
   }
 };
 
-export { singUp, login, logout, getMe };
+export { signUp, login, logout, getMe };

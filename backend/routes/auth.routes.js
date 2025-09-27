@@ -3,14 +3,14 @@ import {
   getMe,
   login,
   logout,
-  singUp,
+  signUp,
 } from "../controllers/auth.controller.js";
 import { protectRoute } from "../middleware/auth.js";
 
 const router = express.Router();
 
 router.get("/me", protectRoute, getMe);
-router.post("/signup", singUp);
+router.post("/signup", signUp);
 router.post("/login", login);
 router.post("/logout", logout);
 
