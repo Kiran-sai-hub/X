@@ -97,7 +97,7 @@ const getSuggetedUsers = async (req, res) => {
 const updateUser = async (req, res) => {
   const { username, fullname, email, currentPassword, newPassword, bio, link } =
     req.body;
-  let { profileImg, coverImage } = req.body;
+  let { profilePicture, coverImage } = req.body;
 
   const userId = req.user._id;
 
@@ -132,14 +132,14 @@ const updateUser = async (req, res) => {
       user.password = await bcrypt.hash(newPassword, salt);
     }
 
-    if (profileImg) {
-      if (user.profileImg) {
+    if (profilePicture) {
+      if (user.profilePicture) {
         await cloudinary.uploader.destroy(
-          user.profileImg.split("/").pop().split(".")[0]
+          user.profilePicture.split("/").pop().split(".")[0]
         );
       }
-      const uploadRes = await cloudinary.uploader.upload(profileImg);
-      profileImg = uploadRes.secure_url;
+      const uploadRes = await cloudinary.uploader.upload(profilePicture);
+      profilePicture = uploadRes.secure_url;
     }
 
     if (coverImage) {
@@ -157,7 +157,7 @@ const updateUser = async (req, res) => {
     user.email = email || user.email;
     user.bio = bio || user.bio;
     user.link = link || user.link;
-    user.profileImg = profileImg || user.profileImg;
+    user.profilePicture = profilePicture || user.profilePicture;
     user.coverImage = coverImage || user.coverImage;
 
     user = await user.save();
