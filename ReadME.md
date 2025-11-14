@@ -69,7 +69,7 @@ A fully functional Twitter (𝕏) clone that replicates the core features of the
 
 ## Demo
 
-![Chirply Demo](https://chirply-kzlc.onrender.com/)
+[Chirply Demo](https://chirply-kzlc.onrender.com/)
 
 
 ## Tech Stack
